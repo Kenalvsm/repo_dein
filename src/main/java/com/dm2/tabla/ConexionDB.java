@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class ConexionDB {
 
-    private static final String FICH_CONFIG = ".env";
+    private static final String FICH_CONFIG = "/com/dm2/tabla/db.properties";
 
     private static final Map<String, String> config = new HashMap<>();
     private static final String URL;

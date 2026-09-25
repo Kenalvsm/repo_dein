@@ -41,3 +41,6 @@ build/
 
 .env
 .venv/
+
+### Configuración con credenciales ###
+db.properties
