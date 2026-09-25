@@ -3,4 +3,5 @@ usamos estos comandos en la terminal de docker para que el usuario adat tenga pe
 `GRANT ALL PRIVILEGES ON TableViewDB.* TO 'admin'@'%';` para dar permisos a usuario adat.
 
 
-las credenciales estaran a la altura de .env.example y db.properties.example en su respectivo .env y db.properties.example
+las credenciales estaran a la altura de .env.example y db.properties.example,
+en su respectivo .env y db.properties.example
