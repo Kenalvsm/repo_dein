@@ -18,6 +18,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.TableCell;
+import java.text.SimpleDateFormat;
 
 public class HelloController implements Initializable {
 
@@ -68,6 +70,15 @@ public class HelloController implements Initializable {
         tb_nom.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         tb_ap.setCellValueFactory(new PropertyValueFactory<>("apellido"));
         tb_f_nac.setCellValueFactory(new PropertyValueFactory<>("f_nac"));
+
+        tb_f_nac.setCellFactory(col -> new TableCell<Persona, Date>() {
+            private final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            @Override
+            protected void updateItem(Date item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty || item == null ? null : sdf.format(item));
+            }
+        });
 
         bt_add.setOnAction(e -> anadirPersona());
         bt_eliminar.setOnAction(e -> eliminarPersona());
