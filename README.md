@@ -1,6 +1,10 @@
+# Ejecucuin
+
+- Estando en `Launcher.java` pulsar el boton de play, si no se tiene la base de datos te saldra el mensaje de error de conexion a la base de datos lo cual no permitira agregar usuarios
+
 # Creacion de la base de datos
 
-## Usamos estos comandos en la terminal de docker para que el usuario adat tenga permisos 
+## Usamos estos comandos en la terminal de docker para que el usuario adat tenga permisos en caso de que de problemas con los permisos
 
 - Para levantar el docker hacer un ``docker compose up -d`` en la carpeta que esta el ``compose.yaml``
 
