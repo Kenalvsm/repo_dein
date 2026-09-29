@@ -1,4 +1,4 @@
-package com.dm2.tabla;
+package com.dm2.tabla.controllers;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -13,6 +13,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import com.dm2.tabla.conexiones_DB.ConexionDB;
+import com.dm2.tabla.assets.Persona;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
