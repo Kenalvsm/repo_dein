@@ -1,4 +1,4 @@
-package com.dm2.tabla;
+package com.dm2.tabla.assets;
 
 import java.util.Date;
 
