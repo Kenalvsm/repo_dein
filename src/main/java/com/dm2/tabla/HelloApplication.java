@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class HelloApplication extends Application {
     @Override
@@ -19,7 +20,7 @@ public class HelloApplication extends Application {
         stage.setMinHeight(400);
 
         stage.getIcons().add(new Image(
-                getClass().getResourceAsStream("img/icono.png")
+                Objects.requireNonNull(getClass().getResourceAsStream("img/icono.png"))
         ));
 
         stage.show();
