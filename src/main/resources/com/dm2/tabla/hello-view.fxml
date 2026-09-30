@@ -10,64 +10,65 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-800" maxWidth="800" minHeight="300" minWidth="300" prefHeight="493.0" prefWidth="600.0" style="-fx-border-color: blue;" styleClass="borde_azul" stylesheets="@css/estilos.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dm2.tabla.controllers.HelloController">
+<VBox maxHeight="-800" maxWidth="800" minHeight="300" minWidth="300"
+      prefHeight="493.0" prefWidth="600.0"
+      style="-fx-border-color: blue;"
+      styleClass="borde_azul"
+      stylesheets="@css/estilos.css"
+      xmlns="http://javafx.com/javafx/26"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.dm2.tabla.controllers.HelloController">
    <children>
+
       <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <Label text="Nombre: ">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets></Label>
-            <TextField fx:id="tf_nombre" />
-            <Button fx:id="bt_add" mnemonicParsing="false" text="Add" />
-         </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
          <padding>
             <Insets left="10.0" />
          </padding>
-      </HBox>
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Apellido: " />
+            <Label text="%form.name" />
+            <TextField fx:id="tf_nombre" />
+            <Button fx:id="bt_add" mnemonicParsing="false" text="%button.add" />
+         </children>
+      </HBox>
+
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+         <children>
+            <Label text="%form.surname" />
             <TextField fx:id="tf_apellido" />
          </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
+      </HBox>
+
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
          <padding>
             <Insets left="10.0" />
          </padding>
-      </HBox>
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label text="Fecha de nacimiento:  " />
+            <Label text="%form.birthdate" />
             <DatePicker fx:id="f_nac" />
          </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <padding>
-            <Insets left="10.0" />
-         </padding>
       </HBox>
+
       <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <Button fx:id="bt_restaurar" mnemonicParsing="false" text="Restaurar" />
-            <Button fx:id="bt_eliminar" mnemonicParsing="false" text="Eliminar" />
-         </children>
          <padding>
             <Insets left="10.0" />
          </padding>
+         <children>
+            <Button fx:id="bt_restaurar" mnemonicParsing="false" text="%button.restore" />
+            <Button fx:id="bt_eliminar" mnemonicParsing="false" text="%button.delete" />
+         </children>
       </HBox>
+
       <TableView fx:id="tabla" prefHeight="200.0" prefWidth="200.0">
-        <columns>
-          <TableColumn fx:id="tb_id" editable="false" prefWidth="75.0" text="ID" />
-          <TableColumn fx:id="tb_nom" prefWidth="75.0" text="Nombre" />
-            <TableColumn fx:id="tb_ap" prefWidth="75.0" text="Apellido" />
-            <TableColumn fx:id="tb_f_nac" prefWidth="123.0" text="Fecha de nacimiento" />
-        </columns>
+         <columns>
+            <TableColumn fx:id="tb_id"    editable="false" prefWidth="75.0"  text="%table.id" />
+            <TableColumn fx:id="tb_nom"   prefWidth="75.0"  text="%table.name" />
+            <TableColumn fx:id="tb_ap"    prefWidth="75.0"  text="%table.surname" />
+            <TableColumn fx:id="tb_f_nac" prefWidth="123.0" text="%table.birthdate" />
+         </columns>
       </TableView>
+
    </children>
 </VBox>

@@ -16,6 +16,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.dm2.tabla.assets.I18n;
 import com.dm2.tabla.assets.LoggerConfig;
 import com.dm2.tabla.assets.Persona;
 import com.dm2.tabla.conexiones_DB.ConexionDB;
@@ -46,6 +47,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
  * Toda la actividad relevante (inicio, carga de datos, inserciones, borrados,
  * restauraciones, validaciones y errores) se registra mediante un
  * {@link Logger} que escribe en el archivo {@code aplicacion.log}.
+ * </p>
+ * <p>
+ * Los textos mostrados al usuario (tooltips, alertas) se obtienen del
+ * {@link ResourceBundle} mediante {@link I18n}, por lo que se traducen
+ * automáticamente según la locale del sistema.
  * </p>
  * <p>
  * La fecha de nacimiento no puede ser posterior al día actual: el
@@ -151,15 +157,15 @@ public class HelloController implements Initializable {
         });
 
         // -----------------------------------------------------------
-        // TOOLTIPS en botones y otros controles
+        // TOOLTIPS en botones y otros controles (traducidos con I18n)
         // -----------------------------------------------------------
-        bt_add.setTooltip(new Tooltip("Añade una nueva persona con los datos introducidos"));
-        bt_eliminar.setTooltip(new Tooltip("Elimina la persona seleccionada en la tabla"));
-        bt_restaurar.setTooltip(new Tooltip("Restaura la última persona eliminada"));
-        f_nac.setTooltip(new Tooltip("Fecha de nacimiento (no se permiten fechas futuras)"));
-        tf_nombre.setTooltip(new Tooltip("Introduce el nombre de la persona"));
-        tf_apellido.setTooltip(new Tooltip("Introduce el apellido de la persona"));
-        tabla.setTooltip(new Tooltip("Listado de personas registradas"));
+        bt_add.setTooltip(new Tooltip(I18n.get("tooltip.add")));
+        bt_eliminar.setTooltip(new Tooltip(I18n.get("tooltip.delete")));
+        bt_restaurar.setTooltip(new Tooltip(I18n.get("tooltip.restore")));
+        f_nac.setTooltip(new Tooltip(I18n.get("tooltip.birthdate")));
+        tf_nombre.setTooltip(new Tooltip(I18n.get("tooltip.name")));
+        tf_apellido.setTooltip(new Tooltip(I18n.get("tooltip.surname")));
+        tabla.setTooltip(new Tooltip(I18n.get("tooltip.table")));
 
         // Manejadores
         bt_add.setOnAction(e -> anadirPersona());
@@ -196,7 +202,7 @@ public class HelloController implements Initializable {
 
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Error al cargar la lista de personas", e);
-            mostrarError("No se pudo cargar la lista de personas", e);
+            mostrarError(I18n.get("alert.error.load"), e);
         }
     }
 
@@ -210,7 +216,7 @@ public class HelloController implements Initializable {
         if (nombre.isEmpty() || apellido.isEmpty() || f_nac.getValue() == null) {
             LOGGER.warning("Intento de añadir persona con campos vacíos o fecha nula.");
             new Alert(Alert.AlertType.WARNING,
-                    "Debes rellenar nombre, apellido y fecha de nacimiento").showAndWait();
+                    I18n.get("alert.missing.fields")).showAndWait();
             return;
         }
 
@@ -241,7 +247,7 @@ public class HelloController implements Initializable {
 
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Error al insertar la persona: " + nombre + " " + apellido, e);
-            mostrarError("No se pudo insertar la persona", e);
+            mostrarError(I18n.get("alert.error.insert"), e);
         }
     }
 
@@ -252,7 +258,8 @@ public class HelloController implements Initializable {
         Persona seleccionada = tabla.getSelectionModel().getSelectedItem();
         if (seleccionada == null) {
             LOGGER.warning("Intento de eliminar sin fila seleccionada.");
-            new Alert(Alert.AlertType.WARNING, "Selecciona una fila para eliminar").showAndWait();
+            new Alert(Alert.AlertType.WARNING,
+                    I18n.get("alert.select.row")).showAndWait();
             return;
         }
 
@@ -273,7 +280,7 @@ public class HelloController implements Initializable {
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Error al eliminar la persona con ID "
                     + seleccionada.getId(), e);
-            mostrarError("No se pudo eliminar la persona", e);
+            mostrarError(I18n.get("alert.error.delete"), e);
         }
     }
 
@@ -309,7 +316,7 @@ public class HelloController implements Initializable {
 
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Error al restaurar la persona", e);
-            mostrarError("No se pudo restaurar la persona", e);
+            mostrarError(I18n.get("alert.error.restore"), e);
         }
     }
 
